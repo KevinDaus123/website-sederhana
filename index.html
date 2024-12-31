@@ -43,6 +43,92 @@
       animation: pulse 2s infinite;
     }
 
+    .nav {
+      display: flex;
+      justify-content: center;
+      background: #1a1a2e;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav a {
+      color: #21e6c1;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #28f9d0;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 25px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1010;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #21e6c1;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+    }
+
+    .nav-links.active {
+      flex-direction: column;
+      display: flex;
+      background: #1a1a2e;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .nav-links a {
+        padding: 10px;
+        margin: 5px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
     .section {
       margin: 30px 0;
     }
@@ -84,7 +170,6 @@
       font-size: 0.9rem;
     }
 
-    /* Animasi */
     @keyframes pulse {
       0%, 100% {
         transform: scale(1);
@@ -113,21 +198,43 @@
         transform: translateY(-10px);
       }
     }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
   </style>
 </head>
 <body>
+  <nav class="nav">
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links">
+      <a href="#tentang-saya">Tentang Saya</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#pendidikan">Pendidikan</a>
+      <a href="#keterampilan">Keterampilan</a>
+      <a href="#proyek">Proyek</a>
+    </div>
+  </nav>
+
   <div class="container floating-card">
     <div class="header">
       <h1 class="glow-text">KEVIN DAUS</h1>
       <p>0889-7372-9887 • kevinndaus@gmail.com</p>
     </div>
-    
-    <div class="section">
+
+    <div class="section" id="tentang-saya">
       <h2>TENTANG SAYA</h2>
       <p>Saya seorang IT Programmer dengan pengalaman dalam bidang pengembangan perangkat lunak dan teknologi informasi. Memiliki latar belakang yang kuat dalam pemrograman dan manajemen sistem, saya ahli dalam merancang dan mengembangkan aplikasi yang memenuhi kebutuhan teknis serta mendukung strategi bisnis.</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="pengalaman">
       <h2>PENGALAMAN</h2>
       <h3>IT Programmer, PT. Hadin Metavisi Akademika</h3>
       <p>Jan 2024 - Sekarang</p>
@@ -151,7 +258,7 @@
       </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="pendidikan">
       <h2>PENDIDIKAN</h2>
       <h3>Universitas Terbuka</h3>
       <p>Sistem Informasi • Aug 2024 - Sekarang</p>
@@ -159,7 +266,7 @@
       <p>Rekayasa Perangkat Lunak • May 2020 - June 2023</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="keterampilan">
       <h2>KETERAMPILAN</h2>
       <ul>
         <li>Pengalaman menggunakan alat version control seperti Git dan platform seperti GitHub atau GitLab.</li>
@@ -169,6 +276,108 @@
       </ul>
     </div>
 
+    <div class="section" id="proyek">
+      <h2>PROYEK TERKAIT</h2>
+      <div class="project">
+        <h3>Aplikasi PPOB Pulsa, token, data dll </h3>
+        <p>Proyek ini adalah aplikasi berbasis web yang dirancang untuk memfasilitasi transaksi pembayaran dan pembelian kebutuhan digital seperti pulsa, token listrik, paket data, dan berbagai layanan PPOB lainnya. Fitur utama mencakup pengelolaan transaksi secara efisien, sistem pelacakan riwayat pembelian, integrasi metode pembayaran modern, dan pengaturan data pelanggan secara terpusat.
+          <ul>
+            <li>Deposit otomatis payment gateway dan deposit manual</li>
+            <li>Pemesanan Produk digital seperti pulsa, token pln, dll </li>
+            <li>Laporan Penghasilan</li>
+            <li>dll</li>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 08-57-00 HADINPAY.png" alt="Aplikasi PPOB">
+      </div>
+
+      <div class="project">
+        <h3>Aplikasi Pembayaran SPP</h3>
+        <p>Aplikasi pembayaran SPP sekolah adalah perangkat lunak yang bertujuan untuk mengelola, memantau, dan mempermudah proses pembayaran SPP atau iuran lainnya dalam sistem pendidikan. Aplikasi ini biasanya digunakan oleh lembaga pendidikan seperti sekolah dasar, sekolah menengah, hingga institusi pendidikan tinggi untuk mendigitalkan proses administrasi keuangan, khususnya terkait pembayaran yang dilakukan siswa atau orang tua.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 14-58-57 Login Admin _ Petugas - Aplikasi Pembayaran SPP.png" alt="Aplikasi Pembayaran SPP">
+      </div>
+    </div>
+
+    <div class="project">
+        <h3>Website Company Profile</h3>
+        <p>platform berbasis digital yang dirancang untuk memudahkan pengguna dalam melacak status pengiriman barang secara real-time. Layanan ini mendukung hanya mendukung hadin pos x pos Indonesia , memungkinkan pengguna memantau perjalanan paket mereka mulai dari proses pengiriman hingga tiba di tujuan.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 15-05-59 Hadin Metavisi Akademika PT . Hadin Metavisi Akademika.png" alt="Website Company Profile">
+      </div>
+    </div>
+
+      <div class="project">
+        <h3>Aplikasi e-Commerce </h3>
+        <p>Hadin eCommerce, platform yang dirancang khusus untuk memenuhi kebutuhan transaksi internal di Universitas Hasanuddin. Dengan Hadin eCommerce, seluruh civitas akademika dapat menikmati pengalaman berbelanja yang aman, efisien, dan mudah.
+          <ul>
+            <li>Pengelolaan produk dan stok otomatis.</li>
+            <li>Panel admin untuk memonitor aktivitas pengguna dan transaksi.</li>
+            <li>dll</li>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 10-16-19 Hadin Ecommerce.png" alt="Aplikasi e-Commerce">
+      </div>
+
+      <div class="project">
+        <h3>Aplikasi Surat Disposisi</h3>
+        <p>Dirancang untuk membantu perusahaan dalam memanage surat dan disposisi secara real-time. Fitur utama termasuk:
+          <ul>
+            <li>Surat Masuk</li>
+            <li>Surat Keluar</li>
+            <li>Disposisi Masuk</li>
+            <li>Disposisi Keluar</li>
+            <li>Dll</li>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 10-45-48 E-Office Hadin v1.0.png" alt="Aplikasi Surat Disposisi">
+      </div>
+    </div>
+
+    <div class="project">
+        <h3>Aplikasi human resources information system</h3>
+        <p>berhasil membuat aplikasi dan Sukses mengembangkan fitur baru, termasuk pengajuan izin dan permohonan cuti yang lebih ramah pengguna, dapat diakses oleh seluruh staf secara mobile. Fitur ini meningkatkan efisiensi manajemen kepegawaian dan mengurangi kesalahan input data manual.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 11-11-47 Hadin HRIS Login.png" alt="Aplikasi human resources information system">
+      </div>
+    </div>
+
+    <div class="project">
+        <h3>Web QR CODE</h3>
+        <p>Berhasil mengembangkan sistem kode QR khusus untuk inventaris perusahaan. Solusi ini memungkinkan seseorang dengan mudah mengakses informasi inventaris seperti deskripsi, lokasi, dan status aset hanya dengan memindai kode QR.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 11-47-17 Hadin Generate QR Code dengan Logo.png" alt="web QR CODE">
+      </div>
+    </div>
+
+    <div class="project">
+        <h3>Website Pemesanan Parsel Lebaran</h3>
+        <p>platform khusus untuk pemesanan dan pengelolaan parsel Lebaran, dirancang untuk memudahkan pelanggan dalam memesan parsel secara online. Layanan ini menawarkan berbagai pilihan parsel dengan isi yang dapat disesuaikan, termasuk makanan, minuman, dan kebutuhan khas Hari Raya.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 11-51-01 Hadin Parsel.png" alt="Website Pemesanan Parsel">
+      </div>
+    </div>
+
+    <div class="project">
+        <h3>Website Pelacakan Resi</h3>
+        <p>platform berbasis digital yang dirancang untuk memudahkan pengguna dalam melacak status pengiriman barang secara real-time. Layanan ini mendukung hanya mendukung hadin pos x pos Indonesia , memungkinkan pengguna memantau perjalanan paket mereka mulai dari proses pengiriman hingga tiba di tujuan.
+          <ul>
+          </ul>
+        </p>
+        <img src="Screenshot 2024-12-31 at 11-57-44 Pelacakan Paket.png" alt="Website Pelacakan Resi">
+      </div>
+    </div>
+    
     <div class="footer">
       <p>&copy; 2024 Kevin Daus</p>
     </div>
